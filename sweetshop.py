@@ -25,3 +25,9 @@ class SweetShop:
             sweet for sweet in self.inventory.values()
             if name.lower() in sweet.name.lower()
         ]
+
+    def search_by_category(self, category):
+        return [
+            sweet for sweet in self.inventory.values()
+            if category.lower() == sweet.category.lower()
+        ]

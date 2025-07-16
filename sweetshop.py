@@ -31,3 +31,9 @@ class SweetShop:
             sweet for sweet in self.inventory.values()
             if category.lower() == sweet.category.lower()
         ]
+
+    def search_by_price_range(self, min_price, max_price):
+        return [
+            sweet for sweet in self.inventory.values()
+            if min_price <= sweet.price <= max_price
+        ]

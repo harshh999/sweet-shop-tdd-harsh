@@ -39,5 +39,18 @@ class TestSweetShop(unittest.TestCase):
         results = self.shop.search_by_category("Nut-Based")
         self.assertEqual(len(results), 2)
 
+    def test_search_by_price_range(self):
+        self.shop.add_sweet(Sweet(1010, "Imarti", "Fried", 15, 30))
+        self.shop.add_sweet(Sweet(1011, "Dry Fruit Laddu", "Nut-Based", 60, 15))
+        self.shop.add_sweet(Sweet(1012, "Jalebi", "Fried", 25, 40))
+        results = self.shop.search_by_price_range(20, 40)
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0].name, "Jalebi")
+
+    def test_purchase_sweet(self):
+        self.shop.add_sweet(Sweet(1013, "Barfi", "Milk-Based", 30, 10))
+        self.shop.purchase_sweet(1013, 3)
+        self.assertEqual(self.shop.inventory[1013].quantity, 7)
+
 if __name__ == '__main__':
     unittest.main()

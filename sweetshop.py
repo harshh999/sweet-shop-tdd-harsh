@@ -37,3 +37,11 @@ class SweetShop:
             sweet for sweet in self.inventory.values()
             if min_price <= sweet.price <= max_price
         ]
+
+    def purchase_sweet(self, sweet_id, quantity):
+        if sweet_id not in self.inventory:
+            raise ValueError("Sweet not found.")
+        sweet = self.inventory[sweet_id]
+        if sweet.quantity < quantity:
+            raise ValueError("Not enough stock.")
+        sweet.quantity -= quantity

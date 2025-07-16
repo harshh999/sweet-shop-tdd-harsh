@@ -19,3 +19,9 @@ class SweetShop:
 
     def view_sweets(self):
         return list(self.inventory.values())
+
+    def search_by_name(self, name):
+        return [
+            sweet for sweet in self.inventory.values()
+            if name.lower() in sweet.name.lower()
+        ]

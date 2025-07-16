@@ -45,3 +45,8 @@ class SweetShop:
         if sweet.quantity < quantity:
             raise ValueError("Not enough stock.")
         sweet.quantity -= quantity
+
+    def restock_sweet(self, sweet_id, quantity):
+        if sweet_id not in self.inventory:
+            raise ValueError("Sweet not found.")
+        self.inventory[sweet_id].quantity += quantity

@@ -32,5 +32,12 @@ class TestSweetShop(unittest.TestCase):
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0].name, "Kaju Katli")
 
+    def test_search_by_category(self):
+        self.shop.add_sweet(Sweet(1007, "Kaju Katli", "Nut-Based", 50, 20))
+        self.shop.add_sweet(Sweet(1008, "Rasgulla", "Milk-Based", 12, 25))
+        self.shop.add_sweet(Sweet(1009, "Badam Barfi", "Nut-Based", 40, 10))
+        results = self.shop.search_by_category("Nut-Based")
+        self.assertEqual(len(results), 2)
+
 if __name__ == '__main__':
     unittest.main()

@@ -52,5 +52,10 @@ class TestSweetShop(unittest.TestCase):
         self.shop.purchase_sweet(1013, 3)
         self.assertEqual(self.shop.inventory[1013].quantity, 7)
 
+    def test_restock_sweet(self):
+        self.shop.add_sweet(Sweet(1014, "Soan Papdi", "Flaky", 20, 5))
+        self.shop.restock_sweet(1014, 10)
+        self.assertEqual(self.shop.inventory[1014].quantity, 15)
+
 if __name__ == '__main__':
     unittest.main()
